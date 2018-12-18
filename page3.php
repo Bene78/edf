@@ -9,7 +9,7 @@
     <body>
          <?php
          include 'cnx.php';
-         $sql = $cnx->prepare("select client.nom, client.prenom, ancienReleve, dernierReleve, identifiant from client, controleur where controleur.id = client.idcontroleur and identifiant =".$_GET['nomparam']);
+         $sql = $cnx->prepare("select client.nom, client.prenom, ancienReleve, dernierReleve, identifiant, id from client, controleur where controleur.id = client.idcontroleur and identifiant =".$_GET['nomparam']);
          $sql->execute();
 
          echo "<table>";
@@ -27,7 +27,7 @@
                 echo "<tr>";
                     echo "<td> dernier relevé : ".$ligne['dernierReleve']."</td> ";
                 echo "</tr>";
-                echo "<form name='insertion' action='' method='POST'>";
+                echo "<form name='insertion' action='page2.php?nomvariable=".$ligne['id']."'method='POST'>";
                     echo "<tr>";
                         echo "<td>Entrez ici le nouveau relevé : </td>";
                         echo "<td><input type='text'/></td>";
